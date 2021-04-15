@@ -1,0 +1,38 @@
+body
+{
+    font-family: Arial, sans-serif;
+}
+
+.center
+{
+    margin: 1% auto;
+    width: 50%;
+    border-collapse:collapse;
+    border-spacing:0;
+    height: auto; 
+
+    cursor: pointer;
+}
+
+a.button 
+{
+    font-weight: 700;
+    color: white !important;
+    text-decoration: none;
+    padding: .3em 1em calc(.3em + 3px);
+    border-radius: 3px;
+    background: rgb(64,199,129);
+    box-shadow: 0 -3px rgb(53,167,110) inset;
+    transition: 0.2s;
+} 
+
+a.button:hover 
+{ 
+    background: rgb(53, 167, 110);
+}
+
+a.button:active 
+{
+    background: rgb(33,147,90);
+    box-shadow: 0 3px rgb(33,147,90) inset;
+}

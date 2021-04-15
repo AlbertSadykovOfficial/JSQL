@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>JS_Gsheets</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/table.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class='center'>
+          <h1>Ваши файлы</h1>
+          <p>
+            <em>
+                <a id="google_href" href="" target="_blank">
+                    Ссылка на таблицу
+                </a>
+            </em>
+          <p>
+        
+        
+          <input id="KEYWORD" type="text" placeholder="Поиск">
+          
+          <label class="label">Столбец</label>
+          <select id='SELECTED_COLUMN'>
+            <option value='' selected>Вcе</option>
+          </select>
+          
+          <label class="label">Расширение</label>
+          <select id='SELECTED_EXTENSION'>
+            <option value='' selected>Вcе</option>
+          </select>
+          
+          <a href="#" class="button" onclick="request()">Найти</a>
+      </div>
+
+    
+      <div>
+        <table class='table_cls'>
+          <tbody id="MAIN_TABLE">
+          </tbody>
+        </table>
+      </div>
+    
+      <div>&nbsp;</div>
+    </div>
+
+    <!--  Online (tabletop) library 
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+    -->
+    <!--  Offline (tabletop) library -->
+    <script src='lib/tabletop.min.js'></script>
+
+
+    <!--  (JS_Gsheets)
+    Полная библиотека - сразу все файлы в 1.-->
+    <script src="lib/JS_Gsheets.js"></script>
+    
+    <!-- 
+        Набор файлов, то же, что и JS_Gsheets,
+        но файлы логически обособленны
+    
+    <script src="js/config.js"></script>
+    <script src="js/tags.js"></script>
+    <script src="js/output.js"></script>
+    <script src="js/main.js"></script>-->
+  </body>
+</html>
