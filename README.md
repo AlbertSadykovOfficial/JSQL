@@ -3,19 +3,19 @@
 JS_Gsheets - небольшая библиотека основанная на (tabletop.js)
 для извлечения данных из Google - таблиц и вывода их в таблицы html.
 
-(Была написана для конструктора сайтов - Tilda)
+> (Была написана для конструктора сайтов - Tilda)
 
-> Github Page Demo:
+Github Page Demo:
 
-https://albertsadykovofficial.github.io/JS_Gsheets/index.html
+> https://albertsadykovofficial.github.io/JS_Gsheets/index.html
 
-> Примечание к использованию
+Примечание к использованию
   
 :white_check_mark: Можно использовать как набор разнородных файлов из каталога js.
 
 :white_check_mark: Можно использовать файл lib/JS_Gsheets.js как (ВСЕ В ОДНОМ).
 
-> Настройки:
+Настройки:
     
 :white_check_mark: SHEET_URL - Ключ ссылки на таблицу (таблица должна быть публичной)
 
