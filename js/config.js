@@ -1,12 +1,13 @@
 SHEET_URL = "1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4";
-    
+
 USER_COLUMN = "MAIL";
-FILE_URL = "PhotoUrl";
+DATE_COLUMN = "Date";
+DOC_TYPE = "Doc_Type";
 CHECK_ALL = "";
 
-TABLE_COLUMNS = ["MAIL", "Image", "State", "City"];
-SPEC_COLUMNS  = [["PhotoUrl", "<a href='","'>Ссылка</a>"]]
-
+ALT_T_COLUMNS = [ "Имя", "Город", "Дата загрузки", "Документ"];
+TABLE_COLUMNS = [ "User", "City", "Date"];
+SPEC_COLUMNS  = [["Doc_Type", "File", "<a href='","'>","</a>"]]
 /*
         
     Настройки.

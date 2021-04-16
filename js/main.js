@@ -5,7 +5,7 @@
 */
 function O(i)
 {
-   return typeof i == 'object' ? i : document.getElementById(i) 
+   return typeof i == 'object' ? i : document.getElementById(i);
 }
 
 
@@ -52,10 +52,20 @@ function check_occurrence(ARR, filter)
     return false;
 }
 
+function check_date(from, to, date)
+{
+    date = new Date(date);
+
+    if (from < date && date < to)
+        return true
+    else
+        return false
+}
+
 function find(data)
 {
 
-    let exts = [];
+    let docs = [];
 
     create_table_header();
 
@@ -66,7 +76,10 @@ function find(data)
 
     column      = O("SELECTED_COLUMN").value;
     filter      = O("KEYWORD").value.toLowerCase();
-    ext_filter  = O("SELECTED_EXTENSION").value.toLowerCase();
+    doc_filter  = O("SELECTED_DOCTYPE").value.toLowerCase();
+
+    from_date = new Date(O("from_date").value);
+    to_date   = new Date(O("to_date").value);
 
     create_selector(data[0]);
 
@@ -76,29 +89,35 @@ function find(data)
         {  
             if (column == CHECK_ALL && check_occurrence(data[i], filter))
             {
-                if ((data[i][FILE_URL]).toLowerCase().includes(ext_filter))
+                if ((data[i][DOC_TYPE]).toLowerCase().includes(doc_filter))
                 {
-                    print_result(data[i]);
+                    if (check_date(from_date, to_date, data[i][DATE_COLUMN]))
+                    {
+                        print_result(data[i]);
+                    }
                 }
             }
             else if (column != CHECK_ALL)
             {
                 if ((data[i][column]).toLowerCase().includes(filter))
                 {
-                    if ((data[i][FILE_URL]).toLowerCase().includes(ext_filter))
+                    if ((data[i][DOC_TYPE]).toLowerCase().includes(doc_filter))
                     {
-                        print_result(data[i]);
+                        if (check_date(from_date, to_date, data[i][DATE_COLUMN]))
+                        {
+                            print_result(data[i]);
+                        }
                     }
                 }
             }
         }
 
-        ext = file_extension(data[i][FILE_URL]);
-        if (!exts.includes(ext))
+        doc = file_extension(data[i][DOC_TYPE]);
+        if (!docs.includes(doc))
         {
-            exts.push(ext);
+            docs.push(doc);
         }
     }
 
-    create_file_selector(exts);
+    create_file_selector(docs);
 }

@@ -1,0 +1,11 @@
+.own_width
+{
+    width: 70% !important;
+}
+@media only screen and (orientation: portrait) 
+{
+    .own_width
+    {
+        width: 90% !important;
+    }
+}

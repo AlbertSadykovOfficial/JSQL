@@ -1,12 +1,32 @@
 body
 {
     font-family: Arial, sans-serif;
+    background-color: #e2e8e4;
 }
 
+input , select
+{
+ padding: 3px;
+ border: 2px solid rgba(255, 255, 255, .5);
+ background: rgba(255, 255, 255, .5);
+ appearance: none;
+ outline: none;
+ color: #333;
+}
+
+input:focus, select:focus
+{
+    border-bottom: 2px solid rgb(64,199,129);
+}
+
+a
+{
+    color: #006c84;
+    text-decoration: none;
+}
 .center
 {
     margin: 1% auto;
-    width: 50%;
     border-collapse:collapse;
     border-spacing:0;
     height: auto; 
@@ -25,13 +45,11 @@ a.button
     box-shadow: 0 -3px rgb(53,167,110) inset;
     transition: 0.2s;
 } 
-
 a.button:hover 
 { 
-    background: rgb(53, 167, 110);
+    background: rgb(53, 167, 110); 
 }
-
-a.button:active 
+a.button:active
 {
     background: rgb(33,147,90);
     box-shadow: 0 3px rgb(33,147,90) inset;

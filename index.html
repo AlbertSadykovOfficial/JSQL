@@ -6,11 +6,14 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
+    <link rel="stylesheet" type="text/css" href="css/search.css">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css">
+    <link rel="stylesheet" type="text/css" href="css/config.css">
   </head>
 
   <body>
     <div class="container">
-      <div class='center'>
+      <div class="center own_width">
           <h1>Ваши файлы</h1>
           <p>
             <em>
@@ -21,24 +24,52 @@
           <p>
         
         
-          <input id="KEYWORD" type="text" placeholder="Поиск">
+         <div class='search own_width'>
+                <div class="search_row">
+                    <div class="button_div">
+                        <input id="KEYWORD" type="text" placeholder="Поиск">
+                    </div>
+                    <div class="button_div">
+                        <a href="#" id="switch" class="button" onclick="show_filters()">+</a>
+                        <a href="#" class="button" onclick="request()">Найти</a>
+                    </div>
+                </div>
+
+                <div class="search_row hidden filter_fields">
+                    <div>
+                        <label class="label">Столбец</label>
+                    </div>
+                    <div>
+                        <select id='SELECTED_COLUMN'>
+                            <option value='' selected>Вcе</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="label">Документ</label>
+                    </div>
+                    <div>
+                        <select id='SELECTED_DOCTYPE'>
+                            <option value='' selected>Вcе</option>
+                        </select>
+                    </div>
+                    <br>
+                </div>
+
+                <div class="search_row hidden filter_fields">
+                    <div>Выберите дату:</div>
+                    <div>От</div>
+                    <div><input type="date" id="from_date" value="1980-01-01"></div>
+                    <div>До</div>
+                    <div><input type="date" id="to_date" value="2099-01-01"></div>
+                </div>
+            </div>
           
-          <label class="label">Столбец</label>
-          <select id='SELECTED_COLUMN'>
-            <option value='' selected>Вcе</option>
-          </select>
-          
-          <label class="label">Расширение</label>
-          <select id='SELECTED_EXTENSION'>
-            <option value='' selected>Вcе</option>
-          </select>
-          
-          <a href="#" class="button" onclick="request()">Найти</a>
       </div>
 
     
       <div>
-        <table class='table_cls'>
+        <table class='table_cls own_width'>
           <tbody id="MAIN_TABLE">
           </tbody>
         </table>
@@ -65,6 +96,7 @@
     <script src="js/config.js"></script>
     <script src="js/tags.js"></script>
     <script src="js/output.js"></script>
+    <script src="js/filters.js"></script>
     <script src="js/main.js"></script>-->
   </body>
 </html>

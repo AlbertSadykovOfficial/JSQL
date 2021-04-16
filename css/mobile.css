@@ -1,0 +1,15 @@
+@media only screen and (orientation: portrait) 
+{
+    .search_row > div *
+    {
+        width: 100%;
+    }
+    .search_row > .button_div
+    {
+        display: block;
+        width: 100%;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    
+}

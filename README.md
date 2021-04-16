@@ -9,7 +9,7 @@ Github Page Demo:
 
 > https://albertsadykovofficial.github.io/JS_Gsheets/index.html
 
-Примечание к использованию
+Примечание к использованию:
   
 :white_check_mark: Можно использовать как набор разнородных файлов из каталога js.
 
