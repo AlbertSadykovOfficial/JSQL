@@ -64,7 +64,6 @@ function check_date(from, to, date)
 
 function find(data)
 {
-
     let docs = [];
 
     create_table_header();
