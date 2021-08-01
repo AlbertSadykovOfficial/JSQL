@@ -27,11 +27,12 @@
          <div class='search own_width'>
                 <div class="search_row">
                     <div class="button_div">
-                        <input id="KEYWORD" type="text" placeholder="Поиск">
+                        <input id="KEYWORD" type="text" placeholder="Поиск" onchange='accept_data()'>
                     </div>
                     <div class="button_div">
                         <a href="#" id="switch" class="button" onclick="show_filters()">+</a>
                         <a href="#" class="button" onclick="request()">Найти</a>
+                        <a href="#" class="button" onclick="accept_data()">Найти_new</a>
                     </div>
                 </div>
 
@@ -86,17 +87,21 @@
 
 
     <!--  (JS_Gsheets)
-    Полная библиотека - сразу все файлы в 1.-->
-    <script src="lib/JS_Gsheets.js"></script>
+    Полная библиотека - сразу все файлы в 1.
+    <script src="lib/JS_Gsheets.js"></script>-->
     
     <!-- 
         Набор файлов, то же, что и JS_Gsheets,
-        но файлы логически обособленны
-    
+        но файлы логически обособленны-->
+    <script src="js/example.js"></script>
+    <script src="js/output_alt.js"></script>
+    <script src="js/sql.js"></script>
+    <script src="js/extract_data.js"></script>
+
     <script src="js/config.js"></script>
     <script src="js/tags.js"></script>
     <script src="js/output.js"></script>
     <script src="js/filters.js"></script>
-    <script src="js/main.js"></script>-->
+    <script src="js/main.js"></script>
   </body>
 </html>
