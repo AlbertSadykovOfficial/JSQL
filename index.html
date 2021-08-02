@@ -31,8 +31,7 @@
                     </div>
                     <div class="button_div">
                         <a href="#" id="switch" class="button" onclick="show_filters()">+</a>
-                        <a href="#" class="button" onclick="request()">Найти</a>
-                        <a href="#" class="button" onclick="accept_data()">Найти_new</a>
+                        <a href="#" class="button" onclick="accept_data()">Найти</a>
                     </div>
                 </div>
 
@@ -77,14 +76,11 @@
       </div>
     
       <div>&nbsp;</div>
+
+      <div id='TECHNICAL_DIV' style='display: none'>
+          
+      </div>
     </div>
-
-    <!--  Online (tabletop) library 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-    -->
-    <!--  Offline (tabletop) library -->
-    <script src='lib/tabletop.min.js'></script>
-
 
     <!--  (JS_Gsheets)
     Полная библиотека - сразу все файлы в 1.
@@ -93,15 +89,14 @@
     <!-- 
         Набор файлов, то же, что и JS_Gsheets,
         но файлы логически обособленны-->
+    <script src="js/send_data.js"></script>
     <script src="js/example.js"></script>
-    <script src="js/output_alt.js"></script>
+    <script src="js/output.js"></script>
     <script src="js/sql.js"></script>
     <script src="js/extract_data.js"></script>
 
     <script src="js/config.js"></script>
     <script src="js/tags.js"></script>
-    <script src="js/output.js"></script>
     <script src="js/filters.js"></script>
-    <script src="js/main.js"></script>
   </body>
 </html>

@@ -153,7 +153,7 @@ function SELECT(data, rows=[], condition=[])
 function INSERT(table, rows=[])
 {
 		array_to_query_string(rows);
-		request_to_INSERT(rows);
+		send_data('TABLE_HASH', 'INSERT', rows);
 }
 
 
@@ -162,7 +162,7 @@ function UPDATE(table, rows=[], condition=[])
 		// Выбрали строки, удовлетваряющие условиям
 		id = SELECT(table, ["id"], condition);
 		array_to_query_string(rows);
-		request_to_update(id, rows);
+		send_data('TABLE_HASH', 'UPDATE', rows);
 }
 
 
@@ -170,7 +170,7 @@ function DELETE(table, condition=[])
 {
 		// Выбрали строки, удовлетваряющие условиям
 		SELECT(table, ["id"], condition);
-		request_to_delete(id, rows);
+		send_data('TABLE_HASH', 'DELETE', rows);
 }
 
 

@@ -3,6 +3,10 @@
 		Создание Тегов
 
 */
+function tag_input(value, name)
+{
+    return "<input type='text' name='"+name+"' value='"+ value +"' >";
+}
 
 function tag_option(value, name)
 {

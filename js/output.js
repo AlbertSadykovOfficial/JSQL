@@ -1,20 +1,41 @@
 /*
         
-        Создать шапку таблицы
+       
         Заполнение таблицы
-
-        Создать выпадающие списки:
-            Колонок
-            Расширений файлов
+				Создать шапку таблицы
+        Создать выпадающий список колонок
 
 */
-function create_table_header()
+function print_result_as_array(headers, alt_headers, data)
+{
+
+    let context = "";
+    let sub_context = "";
+
+    print_table_header(alt_headers);
+    print_selector(headers, alt_headers);
+
+    for (let i=0; i < data.length; i++)
+    {
+        sub_context = "";
+    	for (let j=0; j < data[i].length; j++)
+    	{
+            sub_context += tag_td(data[i][j]);
+    	}
+    	context += tag_tr(sub_context);
+    }
+    
+    O('MAIN_TABLE').insertAdjacentHTML('beforeEnd', context);
+}
+
+
+function print_table_header(HEADERS)
 {
     let table_header = "";
     
-    for (let i=0; i < ALT_T_COLUMNS.length; i++)
+    for (let i=0; i < HEADERS.length; i++)
     {
-        table_header += tag_th(ALT_T_COLUMNS[i]);
+        table_header += tag_th(HEADERS[i]);
     }
     
     table_header = tag_tr(table_header);
@@ -22,48 +43,16 @@ function create_table_header()
     O('MAIN_TABLE').innerHTML =  table_header;
 }
 
-function print_result(DATA)
+function print_selector(HEADERS, ALT_HEADERS)
 {
-    let context = "";
+    let options = "";
 
-    for (let i=0; i < TABLE_COLUMNS.length; i++)
-    {
-        context += tag_td(DATA[TABLE_COLUMNS[i]]);
-    }
-    for (let i=0; i < SPEC_COLUMNS.length; i++)
-    {
-        context += tag_td(SPEC_COLUMNS[i][2] + DATA[SPEC_COLUMNS[i][1]] + SPEC_COLUMNS[i][3] + DATA[SPEC_COLUMNS[i][0]] + SPEC_COLUMNS[i][4]);
-    }
+    options = tag_option(CHECK_ALL, "Все");
     
-    context = tag_tr(context);
-    O('MAIN_TABLE').insertAdjacentHTML('beforeEnd', context);
-}
-
-function create_file_selector(ARR) 
-{
-    let options = "";
-
-    options = tag_option(CHECK_ALL, "Все");
-    for (i=0; i<ARR.length; i++) 
+    for (let i=0; i<HEADERS.length; i++) 
     {
-        options += tag_option(ARR[i], ARR[i]);
+        options += tag_option(HEADERS[i], ALT_HEADERS[i]);
     }
-    O("SELECTED_DOCTYPE").innerHTML = options;
-  
-}
-function create_selector(ARR)
-{
-    let options = "";
-    let i = 0;
 
-    options = tag_option(CHECK_ALL, "Все");
-    for (i=0; i<TABLE_COLUMNS.length; i++) 
-    {
-        options += tag_option(TABLE_COLUMNS[i], ALT_T_COLUMNS[i]);
-    }
-    for (let j=0; j<SPEC_COLUMNS.length; j++) 
-    {
-        options += tag_option(SPEC_COLUMNS[i], ALT_T_COLUMNS[i+j]);
-    }
     O("SELECTED_COLUMN").innerHTML = options;
 }
