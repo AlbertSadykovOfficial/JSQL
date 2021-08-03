@@ -17,3 +17,5 @@ Github Page Demo:
 Настройки:
     
 :white_check_mark: SHEET_URL - Ключ ссылки на таблицу (таблица должна быть публичной)
+
+:white_check_mark: SCRIPT_URL - Ключ ссылки на скрипт (таблица должна быть публичной)

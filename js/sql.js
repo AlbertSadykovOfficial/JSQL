@@ -100,17 +100,6 @@ function select_rows(data, rows)
 }
 
 
-function array_to_query_string(rows)
-{
-		let output  = "?";
-		for (let i=0; i<rows.length; i++)
-		{
-				output = output + (rows[i][0] + '=' + rows[i][1]) + '&';
-		}
-		return output.slice(0,-1);
-}
-
-
 function condition_cols_to_lower(condition)
 {
 		for (let i=0; i<condition.length; i++)
@@ -152,7 +141,6 @@ function SELECT(data, rows=[], condition=[])
 
 function INSERT(table, rows=[])
 {
-		array_to_query_string(rows);
 		send_data('TABLE_HASH', 'INSERT', rows);
 }
 
@@ -160,8 +148,7 @@ function INSERT(table, rows=[])
 function UPDATE(table, rows=[], condition=[])
 {
 		// Выбрали строки, удовлетваряющие условиям
-		id = SELECT(table, ["id"], condition);
-		array_to_query_string(rows);
+		//id = SELECT(table, ["id"], condition);
 		send_data('TABLE_HASH', 'UPDATE', rows);
 }
 
@@ -205,8 +192,11 @@ function O(i)
 
 */
 document.addEventListener('DOMContentLoaded', function() {
-    let href = "https://docs.google.com/spreadsheets/d/"+ SHEET_URL +"/edit?usp=sharing";
-    O('google_href').setAttribute("href", href);
+    let table_href = "https://docs.google.com/spreadsheets/d/"+ SHEET_URL +"/edit?usp=sharing";
+
+    let script_href = "https://script.google.com/d/"+ SCRIPT_URL +"/edit?usp=sharing";
+    O('google_table_href').setAttribute("href", table_href);
+    O('google_script_href').setAttribute("href", script_href);
 
     accept_data();
 })

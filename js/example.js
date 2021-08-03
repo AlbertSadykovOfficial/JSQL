@@ -9,7 +9,6 @@ function process_data(data)
     let user_mail = "barminka@otchet.pro";
 
     let column = O("SELECTED_COLUMN").value;
-    let doc_tp = O("SELECTED_DOCTYPE").value.toLowerCase();
     let filter = O("KEYWORD").value.toLowerCase();
 
 		let from_date = new Date(O("from_date").value);
@@ -33,6 +32,19 @@ function process_data(data)
 										[DATE_COLUMN, 'to', to_date]
 									])
 								);
+/*		
+		INSERT('TABLE_HASH', [
+														['City', 'Moscow'],
+														['Image', 'Rat']
+												]
+					);
+*/
+		UPDATE('TABLE_HASH', [
+												['ID', 9], 
+												['City', 'New-York'],
+												['Image', 'Bird']
+									], []
+		);
 
 		print_result_as_array(COLS, ALT_C, result);
 }
