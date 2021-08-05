@@ -1,5 +1,5 @@
 function process_data(data)
-{		
+{
 		let MAIL_COLUMN			= "MAIL";
 		let USERNAME_COLUMN	= 'User';
 		let CITY_COLUMN			= 'City';
@@ -32,19 +32,20 @@ function process_data(data)
 										[DATE_COLUMN, 'to', to_date]
 									])
 								);
-/*		
+	/*	
 		INSERT('TABLE_HASH', [
-														['City', 'Moscow'],
+														['City', 'NO_CITY'],
 														['Image', 'Rat']
 												]
 					);
-*/
-		UPDATE('TABLE_HASH', [
-												['ID', 9], 
-												['City', 'New-York'],
-												['Image', 'Bird']
-									], []
-		);
+		*/	
+		UPDATE(data, [
+												['city', 'New-York'],
+												['image', 'Bird']
+									], [['city', '=', 'NO_CITY'],]
+		);	
+
+		//DELETE( data, [['CiTY', '=', 'NO_CITY']] );
 
 		print_result_as_array(COLS, ALT_C, result);
 }

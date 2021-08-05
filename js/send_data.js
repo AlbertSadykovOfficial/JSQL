@@ -30,7 +30,7 @@ function input_section(data)
 
 		for (let i=0; i < data.length; i++)
 		{
-				// Переводим name в LowerCase, чтобы удоюно было выбирать
+				// Переводим name в нижний регистр, чтобы удобно было выбирать
 				// по ключу в google script.  
 				output += tag_input(data[i][1], data[i][0].toLowerCase());
 		}

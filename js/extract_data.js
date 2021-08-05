@@ -51,7 +51,7 @@ function extract_data_from_google_promise(TABLE_HASH)
 								resolve(
 										get_object_from_JSON(
 												JSON.parse(xmlhttp.responseText)
-												)
+										)
 								);
 						}
 				};
@@ -65,25 +65,33 @@ function extract_data_from_google_promise(TABLE_HASH)
 				xmlhttp.send(null);
 		});
 }
-/*
 
-		Получаем данные из google-таблицы, когда придет ответ:
-		Посылаем данные на обработку, иначе - выводим ошибку.
 
-*/
 function accept_data()
 {
 		//console.time('extract');
 		//console.timeEnd('extract');
+		queryGSQL(console.log, process_data)
 		
-		extract_data_from_google_promise('1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4')
+}
+
+/*
+
+		Получаем данные из google-таблицы, когда придет ответ:
+		Посылаем данные на обработку в callback-функцию success_f
+		Если возникли ошибки, вызываем callback-функцию error_f.
+
+*/
+function queryGSQL(error_f, success_f)
+{
+			extract_data_from_google_promise('1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4')
 				.then(data => 
 						{
-								process_data(data); // example.js
+								success_f(data); // example.js
 						},
 						error => 
 						{
-								console.log(`Message from Promise (Rejected): ${error}`);
+								error_f(`Message from Promise (Rejected): ${error}`);
 						}
 				);
 }
