@@ -36,10 +36,6 @@
 		DELETE FROM имя_таблицы WHERE условие
 		DELETE FROM workers WHERE id=2
 
-		INSERT INTO имя_таблицы SET поле1=значение1, поле2=значение2, поле3=значение3...
-		INSERT INTO имя_таблицы (поле1, поле2...) VALUES (значение1, значение2...)
-		INSERT INTO workers SET name='Вася', age=23, salary=500
-		INSERT INTO workers (name, age, salary) VALUES ('Вася', 23, 500)
 
 		UPDATE имя_таблицы SET поле1=значение1, поле2=значение2, поле3=значение3... WHERE условие_по_которому_следует_выбрать_строки
 		UPDATE workers SET age=30, salary=1000 WHERE id=1
@@ -48,6 +44,12 @@
 		SELECT COUNT(*) FROM имя_таблицы WHERE условие
 		SELECT COUNT(*) as count FROM workers WHERE age=23
 
+*/
+/*
+		INSERT INTO имя_таблицы SET поле1=значение1, поле2=значение2, поле3=значение3...
+		INSERT INTO имя_таблицы (поле1, поле2...) VALUES (значение1, значение2...)
+		INSERT INTO workers SET name='Вася', age=23, salary=500
+		INSERT INTO workers (name, age, salary) VALUES ('Вася', 23, 500)
 */
 function check_condition(data, condition)
 {
@@ -64,6 +66,9 @@ function check_condition(data, condition)
 				if (CONDITION == '=')
 				{
 						if (data[COLUMN] != VALUE) 
+									return false
+				} else if (CONDITION == '<>' || CONDITION == '!='){
+						if (data[COLUMN] == VALUE) 
 									return false
 				} else if (CONDITION == '>'){
 						if (data[COLUMN] <= VALUE) 
@@ -148,12 +153,16 @@ function SELECT(data, rows=[], condition=[])
 		return output;
 }
 
+
 /*
 		Передаем данные на запись в конец таблицы
 */
+let INSERT_VAR = 0;
 function INSERT(table, rows=[])
-{
-		send_data('TABLE_HASH', 'INSERT', rows);
+{		
+		setTimeout(send_data, INSERT_VAR*1000, 'TABLE_HASH', 'INSERT', rows);
+		//send_data('TABLE_HASH', 'INSERT', rows);
+		INSERT_VAR++;
 }
 
 

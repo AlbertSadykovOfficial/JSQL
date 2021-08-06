@@ -1,26 +1,34 @@
 function send_data(TABLE_HASH, FUNCTION, data)
 {
-		let form = "";
-		let SCRIPT_LINK = 'https://script.google.com/macros/s/AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg/exec';
+		let form = document.createElement('form');
+		let id = Math.random();
+		console.log(id);
 
-		form = `<form id="send_data_to_google" target="request_to_sheet" action="" method="POST">`;
-		form += "<input type='text' name='func' value='"+ FUNCTION +"' >";
+		form.id = 'send_data_to_google';
+		form.action = 'https://script.google.com/macros/s/AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg/exec';
+		form.method = 'POST';
+		form.target = 'request_to_sheet_' + id;
 
-		form += input_section(data);
+		form.innerHTML = tag_input(FUNCTION, 'func') + input_section(data) + "<input id='submit_and_send' type='submit'>";
 
-		form += `<input id='submit_and_send' type="submit">
-					</form>
-					<div style="display: none">
-							<iframe name="request_to_sheet" src="#">
+		O('TECHNICAL_DIV').append(form);
+		O('TECHNICAL_DIV').insertAdjacentHTML('beforeEnd', `
+					<div id='${id}' style="display: none" name='${FUNCTION}_ELEMENT' >
+							<iframe name="request_to_sheet_${id}" src="#">
 									Your browser does not support inline frames.
 							</iframe>
 					</div>
-		`;
+		`);
 
-		O('TECHNICAL_DIV').innerHTML = form;
-		O('send_data_to_google').setAttribute('action', SCRIPT_LINK);
-		O('submit_and_send').click();
+		form.submit();
+		setTimeout(delete_iframe, 5000, id);
 		O('send_data_to_google').remove();
+}
+
+
+function delete_iframe(id)
+{
+		O(id).remove();
 }
 
 

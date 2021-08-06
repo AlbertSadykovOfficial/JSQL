@@ -20,7 +20,7 @@ function process_data(data)
 		let ALT_C	= ['Пользователь', 'Город', 'Дата', 'Документ'];
 		
 		result = SELECT(data, COLS, [ 
-																	[MAIL_COLUMN,'=', user_mail],
+																//	[MAIL_COLUMN,'!=', user_mail],
 																	[CITY_COLUMN,'LIKE', filter],
 																	[DATE_COLUMN, 'from', from_date],
 																	[DATE_COLUMN, 'to', to_date]
@@ -32,20 +32,27 @@ function process_data(data)
 										[DATE_COLUMN, 'to', to_date]
 									])
 								);
-	/*	
+	
 		INSERT('TABLE_HASH', [
-														['City', 'NO_CITY'],
+														['City', '1'],
 														['Image', 'Rat']
 												]
+					);	
+/*	
+		INSERT('TABLE_HASH', [
+														['City', 'AAAA'],
+														['Image', 'DAT']
+												]
 					);
-		*/	
+
 		UPDATE(data, [
-												['city', 'New-York'],
-												['image', 'Bird']
-									], [['city', '=', 'NO_CITY'],]
-		);	
+												['city', '4'],
+												['image', 'Rat']
+									], [['id', '=', '7'],]
+		);
+*/
 
-		//DELETE( data, [['CiTY', '=', 'NO_CITY']] );
-
+		//DELETE( data, [['CITY', '=', 'NO_CITY']] );
+		INSERT_VAR = 0;
 		print_result_as_array(COLS, ALT_C, result);
 }
