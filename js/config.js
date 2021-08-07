@@ -1,41 +1,4 @@
-SHEET_URL = "1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4";
-SCRIPT_URL = "1Zuugnn0eKfMxsVGUjc3aXoLhRZAk6EHMPZ-7h2Cqn03RAL4FMkTmd5Ic";
+const GOOGLE_SHEET_URL = "1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4";
+const GOOGLE_SCRIPT_URL = "AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg";
 
-USER_COLUMN = "MAIL";
-DATE_COLUMN = "Date";
-DOC_TYPE = "Doc_Type";
-CHECK_ALL = "";
-
-ALT_T_COLUMNS = [ "Имя", "Город", "Дата загрузки", "Документ"];
-TABLE_COLUMNS = [ "User", "City", "Date"];
-SPEC_COLUMNS  = [["Doc_Type", "File", "<a href='","'>","</a>"]]
-/*
-        
-    Настройки.
-    
-        SHEET_URL - Ключ ссылки на таблицу (таблица должна быть публичной)
-
-        USER_COLUMN - Колонка, которая идентифицирует пользователя (если
-                      в таблице данные разных пользователей, то отбор будет
-                      осуществлятся по этой колонке в фукции find() )
-
-        FILE_URL - Колонка, по которой будет доплнительная проверка
-                   (к примеру - проверка расширения файла в названии)
-
-        CHECL_ALL - стандартное значение (value) тега option при поиске
-                    (""-потому что при такой строке выбираются все записи)
-
-        TABLE_COLUMNS - Список колонок, которые нужно выводить на странице
-        
-        SPEC_COLUMNS - Список (списков колонок специального форматирования).
-                       (1 параметр - Имя столбца; 
-                        2 и 3 - префикс и постфикс;
-
-                        Подразумевается использование:
-                        [2] + DATA[1] + [3]
-
-                        Пример:
-                        "<img src='"+ DATA['photo_url']  +"'>";
-                       )          
-
-*/
+let CHECK_ALL = '';

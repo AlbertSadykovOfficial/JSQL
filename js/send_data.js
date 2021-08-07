@@ -5,7 +5,7 @@ function send_data(TABLE_HASH, FUNCTION, data)
 		console.log(id);
 
 		form.id = 'send_data_to_google';
-		form.action = 'https://script.google.com/macros/s/AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg/exec';
+		form.action = 'https://script.google.com/macros/s/'+GOOGLE_SCRIPT_URL+'/exec';
 		form.method = 'POST';
 		form.target = 'request_to_sheet_' + id;
 

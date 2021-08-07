@@ -21,38 +21,31 @@ function process_data(data)
 		
 		result = SELECT(data, COLS, [ 
 																//	[MAIL_COLUMN,'!=', user_mail],
-																	[CITY_COLUMN,'LIKE', filter],
-																	[DATE_COLUMN, 'from', from_date],
-																	[DATE_COLUMN, 'to', to_date]
+																	[CITY_COLUMN, 'LIKE', [filter]],
+																	[DATE_COLUMN, 'from', [from_date]],
+																	[DATE_COLUMN, 'to', [to_date]]
 																]);
 		console.log(
 									COUNT(data, [
-										[USER_COLUMN,'=',user_mail], 
-										[DATE_COLUMN, 'from', from_date],
-										[DATE_COLUMN, 'to', to_date]
+										[MAIL_COLUMN,'=', [user_mail]], 
+										[DATE_COLUMN, 'from', [from_date]],
+										[DATE_COLUMN, 'to', [to_date]]
 									])
 								);
-	
+/*
 		INSERT('TABLE_HASH', [
 														['City', '1'],
 														['Image', 'Rat']
 												]
-					);	
-/*	
-		INSERT('TABLE_HASH', [
-														['City', 'AAAA'],
-														['Image', 'DAT']
-												]
 					);
-
+	
 		UPDATE(data, [
-												['city', '4'],
-												['image', 'Rat']
-									], [['id', '=', '7'],]
+												['city', 'DONE'],
+												['image', 'COW']
+									], [['id', '=', ['7','8','9','10']],]
 		);
-*/
 
-		//DELETE( data, [['CITY', '=', 'NO_CITY']] );
-		INSERT_VAR = 0;
+
+		DELETE( data, [['CITY', '=', 'DONE']] );*/
 		print_result_as_array(COLS, ALT_C, result);
 }

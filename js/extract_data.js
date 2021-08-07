@@ -1,14 +1,14 @@
 function get_object_from_JSON(json_obj)
 {
-		let keys = []
-		let result = [];
-		let obj = new Object();
+		let keys		= []
+		let result	= [];
+		let obj 		= new Object();
 		let unfiltred_key = '';
 
 		json_obj = json_obj.feed.entry;
 
 		// Создать ассоциативный массив (ссылки)
-		for (key in json_obj[0])
+		for (let key in json_obj[0])
 		{
 				unfiltred_key = key.split('$')
 				if (unfiltred_key[1] != undefined)
@@ -37,8 +37,11 @@ function extract_data_from_google_promise(TABLE_HASH)
 {
 		return new Promise(function(resolve, reject) 
 		{
-				let url = "https://spreadsheets.google.com/feeds/list/"+TABLE_HASH+"/od6/public/values?alt=json";
+				let url;
+				let xmlhttp;
 
+				url = "https://spreadsheets.google.com/feeds/list/"+TABLE_HASH+"/od6/public/values?alt=json";
+				
 				xmlhttp = new XMLHttpRequest();
 
 				xmlhttp.onreadystatechange = function() 
@@ -58,10 +61,13 @@ function extract_data_from_google_promise(TABLE_HASH)
 
 				xmlhttp.onerror = function() 
 				{
-						reject(new Error("Ой-ой, что-то не так в запросе. Проверьте правильность url или подключение к Интернету."));
+						reject(new Error(`Ой-ой, что-то не так в запросе. 
+															Проверьте правильность url,
+															 подключение к Интернету 
+															 или повторите запрос`));
 				};
 
-				xmlhttp.open("GET",url,true);
+				xmlhttp.open("GET", url, true);
 				xmlhttp.send(null);
 		});
 }
@@ -85,10 +91,11 @@ function accept_data()
 */
 function queryGSQL(error_f, success_f)
 {
-			extract_data_from_google_promise('1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4')
+			extract_data_from_google_promise(GOOGLE_SHEET_URL)
 				.then(data => 
 						{
 								success_f(data); // example.js
+								INSERT_VAR = 0;
 						},
 						error => 
 						{

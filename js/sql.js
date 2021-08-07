@@ -53,42 +53,57 @@
 */
 function check_condition(data, condition)
 {
+		let hit = false;
 		let COLUMN 		= '';
 		let CONDITION = '';
 		let VALUE 		= '';
 
 		for (let i=0; i<condition.length; i++)
 		{
+				hit = false;
 				COLUMN 		= condition[i][0];
 				CONDITION = condition[i][1];
-				VALUE 		= condition[i][2];
-				
-				if (CONDITION == '=')
+
+				// Если нам передали не массив, а строку, то делаем массив с одним элементом - str
+				// Иначе строка будет считаться как массив и программа будет ттерировать по ее бкува.
+
+				condition[i][2] = typeof(condition[i][2]) == 'string' ? [condition[i][2]] : condition[i][2];
+
+				for (let j=0; j<condition[i][2].length; j++)
 				{
-						if (data[COLUMN] != VALUE) 
-									return false
-				} else if (CONDITION == '<>' || CONDITION == '!='){
-						if (data[COLUMN] == VALUE) 
-									return false
-				} else if (CONDITION == '>'){
-						if (data[COLUMN] <= VALUE) 
-								return false
-				} else if (CONDITION == '>'){
-						if (data[COLUMN] >= VALUE) 
-								return false
-				} else if (CONDITION == 'LIKE'){
-						if (!data[COLUMN].toLowerCase().includes(VALUE.toLowerCase()))
-								return false
-				} else if (CONDITION == 'from'){
-						if (new Date(data[COLUMN]) < condition[i][2]) 
-								return false
-				} else if (CONDITION == 'to'){
-						if (new Date(data[COLUMN]) > condition[i][2]) 
-								return false
+						VALUE = condition[i][2][j];
+
+						if (CONDITION == '=') {
+								if (data[COLUMN] == VALUE) 
+											hit = true;
+						} else if (CONDITION == '<>' || CONDITION == '!=') {
+								if (data[COLUMN] != VALUE) 
+											hit = true;
+						} else if (CONDITION == '>') {
+								if (data[COLUMN] >= VALUE) 
+										hit = true;
+						} else if (CONDITION == '>') {
+								if (data[COLUMN] <= VALUE) 
+										hit = true;
+						} else if (CONDITION == 'LIKE') {
+								if (data[COLUMN].toLowerCase().includes(VALUE.toLowerCase()))
+										hit = true;
+						} else if (CONDITION == 'from') {
+								if (new Date(data[COLUMN]) > VALUE) 
+										hit = true;
+						} else if (CONDITION == 'to') {
+								if (new Date(data[COLUMN]) < VALUE) 
+										hit = true;
+						}
+				}
+
+				if (hit == false)
+				{
+						return hit;
 				}
 		}
 
-		return true
+		return true;
 }
 
 
@@ -226,9 +241,9 @@ function O(i)
 
 */
 document.addEventListener('DOMContentLoaded', function() {
-    let table_href = "https://docs.google.com/spreadsheets/d/"+ SHEET_URL +"/edit?usp=sharing";
+    let table_href = "https://docs.google.com/spreadsheets/d/"+ GOOGLE_SHEET_URL +"/edit?usp=sharing";
 
-    let script_href = "https://script.google.com/d/"+ SCRIPT_URL +"/edit?usp=sharing";
+    let script_href = "https://script.google.com/d/"+ GOOGLE_SCRIPT_URL +"/edit?usp=sharing";
     O('google_table_href').setAttribute("href", table_href);
     O('google_script_href').setAttribute("href", script_href);
 
