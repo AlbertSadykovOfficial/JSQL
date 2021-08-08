@@ -37,10 +37,7 @@ function extract_data_from_google_promise(TABLE_HASH)
 {
 		return new Promise(function(resolve, reject) 
 		{
-				let url;
 				let xmlhttp;
-
-				url = "https://spreadsheets.google.com/feeds/list/"+TABLE_HASH+"/od6/public/values?alt=json";
 				
 				xmlhttp = new XMLHttpRequest();
 
@@ -67,7 +64,7 @@ function extract_data_from_google_promise(TABLE_HASH)
 															 или повторите запрос`));
 				};
 
-				xmlhttp.open("GET", url, true);
+				xmlhttp.open("GET", GSQL.get_sheet_url(), true);
 				xmlhttp.send(null);
 		});
 }

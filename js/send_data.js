@@ -1,15 +1,17 @@
-function send_data(TABLE_HASH, FUNCTION, data)
+function send_data(TABLE, FUNCTION, data)
 {
 		let form = document.createElement('form');
-		let id = Math.random();
-		console.log(id);
+		let id = Math.random(); // ГЕНЕРИРУЕМ случайный id, чтобы создать несколько iframe, а потом удалить их
 
 		form.id = 'send_data_to_google';
-		form.action = 'https://script.google.com/macros/s/'+GOOGLE_SCRIPT_URL+'/exec';
+		form.action = GSQL.get_script_url();
 		form.method = 'POST';
 		form.target = 'request_to_sheet_' + id;
 
-		form.innerHTML = tag_input(FUNCTION, 'func') + input_section(data) + "<input id='submit_and_send' type='submit'>";
+		form.innerHTML = tag_input(FUNCTION, GSQL.request_parametrs.function) +
+										 tag_input(TABLE, GSQL.request_parametrs.table) + 
+										 input_section(data) + 
+										 "<input id='submit_and_send' type='submit'>";
 
 		O('TECHNICAL_DIV').append(form);
 		O('TECHNICAL_DIV').insertAdjacentHTML('beforeEnd', `

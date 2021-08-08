@@ -175,8 +175,7 @@ function SELECT(data, rows=[], condition=[])
 let INSERT_VAR = 0;
 function INSERT(table, rows=[])
 {		
-		setTimeout(send_data, INSERT_VAR*1000, 'TABLE_HASH', 'INSERT', rows);
-		//send_data('TABLE_HASH', 'INSERT', rows);
+		setTimeout(send_data, INSERT_VAR*1000, table, 'INSERT', rows);
 		INSERT_VAR++;
 }
 
@@ -186,11 +185,11 @@ function INSERT(table, rows=[])
 		Внесли все id в массив row
 		Отправляем команду - обновить
 */
-function UPDATE(data, rows=[], condition=[])
+function UPDATE(data, table, rows=[], condition=[])
 {
 		let ids = SELECT(data, ["id"], condition);
 		rows.push([ 'id', JSON.stringify(ids.flat())]);
-		send_data('TABLE_HASH', 'UPDATE', rows);
+		send_data(table, 'UPDATE', rows);
 }
 
 
@@ -198,10 +197,10 @@ function UPDATE(data, rows=[], condition=[])
 		Выбрали id строк, удовлетваряющих условиям
 		Передаем их на удаление
 */
-function DELETE(data, condition=[])
+function DELETE(data, table, condition=[])
 {
 		let ids = SELECT(data, ["id"], condition);
-		send_data('TABLE_HASH', 'DELETE', [['id', JSON.stringify(ids.flat())]]);
+		send_data(table, 'DELETE', [['id', JSON.stringify(ids.flat())]]);
 }
 
 

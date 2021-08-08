@@ -32,20 +32,20 @@ function process_data(data)
 										[DATE_COLUMN, 'to', [to_date]]
 									])
 								);
-/*
-		INSERT('TABLE_HASH', [
+
+		INSERT('members', [
 														['City', '1'],
 														['Image', 'Rat']
 												]
 					);
-	
-		UPDATE(data, [
+	/*
+		UPDATE(data, 'main' [
 												['city', 'DONE'],
 												['image', 'COW']
 									], [['id', '=', ['7','8','9','10']],]
 		);
 
 
-		DELETE( data, [['CITY', '=', 'DONE']] );*/
+		DELETE( data, 'main', [['CITY', '=', 'DONE']] );*/
 		print_result_as_array(COLS, ALT_C, result);
 }
