@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="css/search.css">
     <link rel="stylesheet" type="text/css" href="css/mobile.css">
     <link rel="stylesheet" type="text/css" href="css/config.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/code.css">-->
+    <link rel="stylesheet" type="text/css" href="css/drop_down.css">
   </head>
 
   <body>
@@ -67,8 +69,162 @@
           <tbody id="MAIN_TABLE">
           </tbody>
         </table>
+        <p id='table_row_counter' class='center own_width'></p>
       </div>
-    
+      
+
+      <section class='interconnection center own_width'>
+          <div>
+              <table class='table_cls width-100'><tbody><th>Взаимодействие с БД</th></tbody></table>
+          </div>
+
+          <div class="container">
+              <div class="center interconnection_body">
+                 
+                 <p>Откройте <a id="google_table_href2" href="" target="_blank">Google-Таблицу</a>, затем откройте 3й лист (sandbox), выбрав его внизу.</p>
+                <p>С ним вы будете взаимодействовать через следующие примеры. Код примеров можно найти в каталоге js/examples проекта</p>
+                <p>В терминологии библиотеки: 
+                    <ul>
+                        <li>Таблица Google - База данных.</li>
+                        <li>Лист Таблицы Google - таблица Базы данных</li>
+                    </ul>
+                </p>
+
+                <table class='table_cls width-100'><tbody><th style='background-color: rgb(70, 190, 134) !important'>INSERT</th></tbody></table>
+                  <div id='insert_example_block'>
+                      <b>INSERT INTO</b> sand <b>SET</b> (
+                          <input type="text" class="UserName" placeholder="user"> , 
+                          <input type="text" class="level" placeholder="level"> , 
+                          <input type="text" class="say" placeholder="says"> )
+
+                          <a href="#" class="button" onclick="queryGSQL(console.log, insert_data,'sandbox')">Вставить</a>
+
+                          <div class="demo">
+                              <input type="checkbox" id="hd-1" class="drop-down-input"/>
+                              <label for="hd-1" >Посмотреть Синтаксис</label>
+                              <div>
+                                  <p>Синтаксис JS для этой команды:</p>
+                                  <pre>
+  INSERT('sandbox', [
+                      ['username', user],
+                      ['level', level],
+                      ['say', says]
+                    ]);
+          
+                              </pre>
+                              <p>Параметры:</p>
+                              <pre>
+  <i>INSERT('таблица', [
+                      [ имя_колонки, [значение_1, значение_2, ..., значение_N]],
+                      [ имя_колонки, [значение_1, значение_2, ..., значение_N]],
+                    ]);</i>
+                                  </pre>
+                              </div>
+                          </div>
+                  </div>
+                  <br>
+                   <table class='table_cls width-100'><tbody><th style='background-color: rgb(70, 128, 190) !important;'>UPDATE</th></tbody></table>
+                  <div id='update_example_block'>
+                      UPDATE sand SET 
+                          <select class='column'>
+                              <option value='UserName'>Имя пользователя</option>
+                              <option value='level'>Уровень</option>
+                              <option value='say' selected>Фразу</option>
+                          </select> 
+                      = <input type="text" class="set_input" placeholder="set_value"> 
+                      WHERE id = <input type="text" class="where_input" placeholder="where_value">
+
+                      <a href="#" class="button" onclick="queryGSQL(console.log, update_data,'sandbox')">Обновить</a>
+
+                    <div class="demo">
+                        <input type="checkbox" id="hd-2" class="drop-down-input"/>
+                        <label for="hd-2" >Посмотреть Синтаксис</label>
+                        <div>
+                            <p>Синтаксис JS для этой команды:</p>
+                            <pre>
+  UPDATE(data, 'sandbox', [
+                            [set_column, set_value],
+                          ],
+                          [
+                            ['id', '=', where_value],
+                          ]);
+                            </pre>
+                            <p>Параметры:</p>
+                            <pre>
+  UPDATE('значения из БД','таблица', [блок установки значений (SET)],[блок условия(WHERE)]
+
+  <i>UPDATE('значения из БД','таблица', [
+                                          [ имя_колонки, новое_значение],
+                                          [ имя_колонки, новое_значение],
+                                            ...
+                                        ],
+                                        [
+                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
+                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
+                                            ...
+                                      ]));</i>
+                            </pre>
+                            <p>Прицип работы параметров (И, ИЛИ):</p>
+                            <pre>
+  UPDATE('значения из БД','таблица', [
+                                        [ имя_колонки, новое_значение] 
+                                     ],
+                                     [
+                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                        И
+                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                        И
+                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                     ]
+                            </pre>
+                        </div>
+                    </div>
+                  </div>
+                  <br><table class='table_cls width-100'><tbody><th style='background-color: rgb(190, 70, 70) !important;'>DELETE</th></tbody></table>
+                  <div id='delete_example_block'>
+                      DELETE FROM sand  
+                      WHERE <select class='column'>
+                                <option value='UserName'>Имя пользователя</option>
+                                <option value='level'>Уровень</option>
+                                <option value='say' selected>Сказал</option>
+                            </select>
+                      LIKE <input type="text" class="input_section" placeholder="value">
+
+                       <a href="#" class="button" onclick="queryGSQL(console.log, delete_data,'sandbox')">Удалить</a>
+                    
+                      <div class="demo">
+                          <input type="checkbox" id="hd-3" class="drop-down-input"/>
+                          <label for="hd-3" >Посмотреть Синтаксис</label>
+                          <div>
+                            <p>Синтаксис JS для этой команды:</p>
+                            <pre class='markdown-body'>
+  DELETE( data, 'sandbox', [
+                              [column, 'LIKE', value]
+                           ]);
+                            </pre>
+                            <p>Параметры:</p>
+                            <pre>                     
+                                
+  <i>DELETE('значения из БД', 'таблица', [
+                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
+                                      ]);</i>                
+                            </pre>
+
+                            <p>Прицип работы параметров (И, ИЛИ):</p>
+                            <pre>
+ <i>DELETE('значения из БД', 'таблица', [
+                                           [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                           И
+                                           [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                      ]);</i>
+                            </pre>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+
       <div>&nbsp;</div>
 
       <div id='TECHNICAL_DIV' style='display: none'>
@@ -83,8 +239,12 @@
     <!-- 
         Набор файлов, то же, что и JS_Gsheets,
         но файлы логически обособленны-->
+    <script src="js/examples/select.js"></script>   
+    <script src="js/examples/insert.js"></script>
+    <script src="js/examples/update.js"></script>
+    <script src="js/examples/delete.js"></script>
+
     <script src="js/send_data.js"></script>
-    <script src="js/example.js"></script>
     <script src="js/output.js"></script>
     <script src="js/sql.js"></script>
     <script src="js/extract_data.js"></script>

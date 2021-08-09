@@ -1,4 +1,4 @@
-function process_data(data)
+function select_data(data)
 {
 		let MAIL_COLUMN			= "MAIL";
 		let USERNAME_COLUMN	= 'User';
@@ -15,37 +15,24 @@ function process_data(data)
     let to_date   = new Date(O("to_date").value);
 
 		let result = [];
-
+		let count = 0;
 		let COLS 	= [USERNAME_COLUMN, CITY_COLUMN, DATE_COLUMN, DOC_TYPE];
 		let ALT_C	= ['Пользователь', 'Город', 'Дата', 'Документ'];
 		
+
 		result = SELECT(data, COLS, [ 
 																//	[MAIL_COLUMN,'!=', user_mail],
 																	[CITY_COLUMN, 'LIKE', [filter]],
 																	[DATE_COLUMN, 'from', [from_date]],
 																	[DATE_COLUMN, 'to', [to_date]]
 																]);
-		console.log(
-									COUNT(data, [
-										[MAIL_COLUMN,'=', [user_mail]], 
-										[DATE_COLUMN, 'from', [from_date]],
-										[DATE_COLUMN, 'to', [to_date]]
-									])
-								);
+		
+		count = COUNT(data, [
+																	[CITY_COLUMN, 'LIKE', [filter]],
+																	[DATE_COLUMN, 'from', [from_date]],
+																	[DATE_COLUMN, 'to', [to_date]]
+									]);
 
-		INSERT('members', [
-														['City', '1'],
-														['Image', 'Rat']
-												]
-					);
-	/*
-		UPDATE(data, 'main' [
-												['city', 'DONE'],
-												['image', 'COW']
-									], [['id', '=', ['7','8','9','10']],]
-		);
-
-
-		DELETE( data, 'main', [['CITY', '=', 'DONE']] );*/
 		print_result_as_array(COLS, ALT_C, result);
+		O('table_row_counter').innerHTML = "Итого: " + count;
 }

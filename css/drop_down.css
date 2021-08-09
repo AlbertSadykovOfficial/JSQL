@@ -1,0 +1,29 @@
+  /* скрываем чекбоксы и блоки с содержанием */
+.drop-down-input {
+    display: none; 
+}
+.drop-down-input + label ~ div{
+    display: none;
+}
+/* оформляем текст label */
+.drop-down-input + label {
+    border-bottom: 1px dotted green;
+    padding: 0;
+    color: green;
+    cursor: pointer;
+    display: inline-block; 
+}
+/* вид текста label при активном переключателе */
+.drop-down-input:checked + label {
+    color: red;
+    border-bottom: 0;
+}
+/* когда чекбокс активен показываем блоки с содержанием  */
+.drop-down-input:checked + label + div {
+    display: block; 
+    background: #efefef;
+    -moz-box-shadow: inset 3px 3px 10px #7d8e8f;
+    -webkit-box-shadow: inset 3px 3px 10px #7d8e8f;
+    box-shadow: inset 3px 3px 10px #7d8e8f;
+    padding: 10px; 
+}

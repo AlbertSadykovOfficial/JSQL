@@ -172,11 +172,10 @@ function SELECT(data, rows=[], condition=[])
 /*
 		Передаем данные на запись в конец таблицы
 */
-let INSERT_VAR = 0;
 function INSERT(table, rows=[])
 {		
-		setTimeout(send_data, INSERT_VAR*1000, table, 'INSERT', rows);
-		INSERT_VAR++;
+		setTimeout(send_data, (GSQL.INSERT_VAR)*1000, table, 'INSERT', rows);
+		GSQL.INSERT_VAR++;
 }
 
 
@@ -245,6 +244,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let script_href = "https://script.google.com/d/"+ GOOGLE_SCRIPT_URL +"/edit?usp=sharing";
     O('google_table_href').setAttribute("href", table_href);
     O('google_script_href').setAttribute("href", script_href);
+
+    O('google_table_href2').setAttribute("href", table_href);
 
     accept_data();
 })

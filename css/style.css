@@ -54,3 +54,20 @@ a.button:active
     background: rgb(33,147,90);
     box-shadow: 0 3px rgb(33,147,90) inset;
 }
+
+.width-100
+{
+    width:100%; 
+}
+
+.interconnection
+{
+    background-color: #b7d2c0;
+}
+
+.interconnection_body
+{
+    width:80%; 
+    padding-bottom: 2%;
+}
+

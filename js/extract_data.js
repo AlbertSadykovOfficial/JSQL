@@ -33,7 +33,7 @@ function get_object_from_JSON(json_obj)
 }
 
 
-function extract_data_from_google_promise(TABLE_HASH) 
+function extract_data_from_google_promise(url) 
 {
 		return new Promise(function(resolve, reject) 
 		{
@@ -64,7 +64,7 @@ function extract_data_from_google_promise(TABLE_HASH)
 															 или повторите запрос`));
 				};
 
-				xmlhttp.open("GET", GSQL.get_sheet_url(), true);
+				xmlhttp.open("GET", url, true);
 				xmlhttp.send(null);
 		});
 }
@@ -74,7 +74,8 @@ function accept_data()
 {
 		//console.time('extract');
 		//console.timeEnd('extract');
-		queryGSQL(console.log, process_data)
+		queryGSQL(console.log, select_data, 'main');
+		//queryGSQL(console.log, insert_data);
 		
 }
 
@@ -86,13 +87,13 @@ function accept_data()
 		Если возникли ошибки, вызываем callback-функцию error_f.
 
 */
-function queryGSQL(error_f, success_f)
+function queryGSQL(error_f, success_f, table_name)
 {
-			extract_data_from_google_promise(GOOGLE_SHEET_URL)
+			extract_data_from_google_promise(GSQL.get_sheet_url_by_table_name(table_name))
 				.then(data => 
 						{
 								success_f(data); // example.js
-								INSERT_VAR = 0;
+								GSQL.INSERT_VAR = 0;
 						},
 						error => 
 						{

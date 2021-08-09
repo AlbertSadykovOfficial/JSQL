@@ -10,17 +10,28 @@ let GSQL =
 
     GOOGLE_SHEET_URL :  "1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4",
     GOOGLE_SCRIPT_URL : "AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg",
+
+    TABLES : ['main', 'members', 'sandbox'],
+    
     INSERT_VAR: 0,
 
     request_parametrs : {
-      function: 'function_name',
-      table: 'table_name'
+        function: 'function_name',
+        table: 'table_name'
     },
 
-    get_sheet_url ()
-    {
-        return "https://spreadsheets.google.com/feeds/list/"+this.GOOGLE_SHEET_URL+"/1/public/values?alt=json";
+    get_sheet_url_by_table_name (table_name)
+    {   
+        for (i=1; i<=this.TABLES.length; i++)
+        {
+            if (this.TABLES[i-1] == table_name)
+            {
+                return "https://spreadsheets.google.com/feeds/list/"+this.GOOGLE_SHEET_URL+"/"+ i +"/public/values?alt=json";
+            }
+        }
+        return "https://spreadsheets.google.com/feeds/list/"+this.GOOGLE_SHEET_URL+"/1/public/values?alt=json"
     },
+
 
     get_script_url()
     {
