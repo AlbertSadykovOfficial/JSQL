@@ -24,6 +24,34 @@ a
     color: #006c84;
     text-decoration: none;
 }
+
+rd
+{
+    font-weight: 900;
+    color:red;
+}
+
+or
+{
+    font-weight: 900;
+    color: orange;
+}
+
+bl
+{
+    font-weight: 900;
+    color: blue;
+}
+
+pre 
+{
+    font-size: 90%;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
 .center
 {
     margin: 1% auto;

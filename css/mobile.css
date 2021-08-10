@@ -11,5 +11,29 @@
         margin-top: 5%;
         margin-bottom: 5%;
     }
+
+    .interconnection
+    {
+        width: 100% !important;
+    }
+
+    .interconnection_body
+    {
+       width: 90% !important; 
+    }
+    
+    .interconnection_body b, .interconnection_body input, 
+    .interconnection_body select
+    {
+        display: block;
+        width: 100%;
+    }
+    .interconnection_body .button    {
+        display: block;
+        margin: auto;
+        margin-top: 2%;
+        width: 30%;
+        text-align: center;
+    }
     
 }

@@ -7,10 +7,10 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
     <link rel="stylesheet" type="text/css" href="css/search.css">
-    <link rel="stylesheet" type="text/css" href="css/mobile.css">
     <link rel="stylesheet" type="text/css" href="css/config.css">
     <!--<link rel="stylesheet" type="text/css" href="css/code.css">-->
     <link rel="stylesheet" type="text/css" href="css/drop_down.css">
+    <link rel="stylesheet" type="text/css" href="css/mobile.css">
   </head>
 
   <body>
@@ -32,11 +32,11 @@
          <div class='search own_width'>
                 <div class="search_row">
                     <div class="button_div">
-                        <input id="KEYWORD" type="text" placeholder="Поиск" onchange='accept_data()'>
+                        <input id="KEYWORD" type="text" placeholder="Поиск" onchange="queryGSQL(console.log, select_data, 'main');">
                     </div>
                     <div class="button_div">
                         <a href="#" id="switch" class="button" onclick="show_filters()">+</a>
-                        <a href="#" class="button" onclick="accept_data()">Найти</a>
+                        <a href="#" class="button" onclick="queryGSQL(console.log, select_data, 'main');">Найти</a>
                     </div>
                 </div>
 
@@ -81,14 +81,16 @@
           <div class="container">
               <div class="center interconnection_body">
                  
-                 <p>Откройте <a id="google_table_href2" href="" target="_blank">Google-Таблицу</a>, затем откройте 3й лист (sandbox), выбрав его внизу.</p>
-                <p>С ним вы будете взаимодействовать через следующие примеры. Код примеров можно найти в каталоге js/examples проекта</p>
-                <p>В терминологии библиотеки: 
+                <p>Откройте <a id="google_table_href2" href="" target="_blank">Google-Таблицу</a>, затем откройте 3й лист (sandbox), выбрав его внизу.
+                С ним вы будете взаимодействовать через следующие примеры. Код примеров можно найти в каталоге js/examples/ проекта
+                В терминологии библиотеки: 
                     <ul>
                         <li>Таблица Google - База данных.</li>
                         <li>Лист Таблицы Google - таблица Базы данных</li>
                     </ul>
                 </p>
+                
+
 
                 <table class='table_cls width-100'><tbody><th style='background-color: rgb(70, 190, 134) !important'>INSERT</th></tbody></table>
                   <div id='insert_example_block'>
@@ -105,34 +107,36 @@
                               <div>
                                   <p>Синтаксис JS для этой команды:</p>
                                   <pre>
-  INSERT('sandbox', [
-                      ['username', user],
-                      ['level', level],
-                      ['say', says]
-                    ]);
+  INSERT('sandbox', <rd>[</rd>
+                      <or>[</or>'username', user<or>]</or>,
+                      <or>[</or>'level', level<or>]</or>,
+                      <or>[</or>'say', says<or>]</or>
+                    <rd>]</rd>);
           
                               </pre>
                               <p>Параметры:</p>
                               <pre>
-  <i>INSERT('таблица', [
-                      [ имя_колонки, [значение_1, значение_2, ..., значение_N]],
-                      [ имя_колонки, [значение_1, значение_2, ..., значение_N]],
-                    ]);</i>
+  <i>INSERT('таблица',<rd> [</rd>
+                      <or>[</or> имя_колонки, <bl>[</bl>значение_1, значение_2, ..., значение_N<bl>]</bl><or>]</or>,
+                      <or>[</or> имя_колонки, <bl>[</bl>значение_1, значение_2, ..., значение_N<bl>]</bl><or>]</or>,
+                    <rd>]</rd>);</i>
                                   </pre>
                               </div>
                           </div>
                   </div>
                   <br>
-                   <table class='table_cls width-100'><tbody><th style='background-color: rgb(70, 128, 190) !important;'>UPDATE</th></tbody></table>
+
+
+                  <table class='table_cls width-100'><tbody><th style='background-color: rgb(70, 128, 190) !important;'>UPDATE</th></tbody></table>
                   <div id='update_example_block'>
-                      UPDATE sand SET 
+                      <b>UPDATE</b> sand <b>SET</b> 
                           <select class='column'>
                               <option value='UserName'>Имя пользователя</option>
                               <option value='level'>Уровень</option>
                               <option value='say' selected>Фразу</option>
                           </select> 
                       = <input type="text" class="set_input" placeholder="set_value"> 
-                      WHERE id = <input type="text" class="where_input" placeholder="where_value">
+                      <b>WHERE</b> id = <input type="text" class="where_input" placeholder="where_value">
 
                       <a href="#" class="button" onclick="queryGSQL(console.log, update_data,'sandbox')">Обновить</a>
 
@@ -142,53 +146,56 @@
                         <div>
                             <p>Синтаксис JS для этой команды:</p>
                             <pre>
-  UPDATE(data, 'sandbox', [
-                            [set_column, set_value],
-                          ],
-                          [
-                            ['id', '=', where_value],
-                          ]);
+  UPDATE(data, 'sandbox', <rd>[</rd>
+                            <or>[</or>set_column, set_value<or>]</or>,
+                          <rd>]</rd>,
+                          <rd>[</rd>
+                            <or>[</or>'id', '=', where_value<or>]</or>,
+                          <rd>]</rd>);
                             </pre>
                             <p>Параметры:</p>
                             <pre>
-  UPDATE('значения из БД','таблица', [блок установки значений (SET)],[блок условия(WHERE)]
+  UPDATE('значения из БД','таблица', <rd>[</rd>блок установки значений (SET)<rd>[</rd>, <rd>[</rd>блок условия(WHERE)<rd>[</rd>)
 
-  <i>UPDATE('значения из БД','таблица', [
-                                          [ имя_колонки, новое_значение],
-                                          [ имя_колонки, новое_значение],
+  <i>UPDATE('значения из БД','таблица', <rd>[</rd>
+                                          <or>[</or> имя_колонки, новое_значение<or>]</or>,
+                                          <or>[</or> имя_колонки, новое_значение<or>]</or>,
                                             ...
-                                        ],
-                                        [
-                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
-                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
+                                        <rd>[</rd>,
+                                        <rd>[</rd>
+                                          <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1, значение_2, ..., значение_N<bl>]</bl><or>]</or>,
+                                          <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1, значение_2, ..., значение_N<bl>]</bl><or>]</or>,
                                             ...
-                                      ]));</i>
+                                      <rd>[</rd>));</i>
                             </pre>
                             <p>Прицип работы параметров (И, ИЛИ):</p>
                             <pre>
-  UPDATE('значения из БД','таблица', [
-                                        [ имя_колонки, новое_значение] 
-                                     ],
-                                     [
-                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+  UPDATE('значения из БД','таблица', <rd>[</rd>
+                                        <or>[</or> имя_колонки, новое_значение<or>]</or>
+                                     <rd>[</rd>,
+                                     <rd>[</rd>
+                                        <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N<bl>]</bl><or>]</or>
                                         И
-                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+                                        <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N<bl>]</bl><or>]</or>
                                         И
-                                        [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
-                                     ]
+                                        <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N<bl>]</bl><or>]</or>
+                                     <rd>[</rd>
                             </pre>
                         </div>
                     </div>
                   </div>
-                  <br><table class='table_cls width-100'><tbody><th style='background-color: rgb(190, 70, 70) !important;'>DELETE</th></tbody></table>
+                  <br>
+
+
+                  <table class='table_cls width-100'><tbody><th style='background-color: rgb(190, 70, 70) !important;'>DELETE</th></tbody></table>
                   <div id='delete_example_block'>
-                      DELETE FROM sand  
-                      WHERE <select class='column'>
+                      <b>DELETE FROM</b> sand  
+                      <b>WHERE</b> <select class='column'>
                                 <option value='UserName'>Имя пользователя</option>
                                 <option value='level'>Уровень</option>
                                 <option value='say' selected>Сказал</option>
                             </select>
-                      LIKE <input type="text" class="input_section" placeholder="value">
+                      <b>LIKE</b> <input type="text" class="input_section" placeholder="value">
 
                        <a href="#" class="button" onclick="queryGSQL(console.log, delete_data,'sandbox')">Удалить</a>
                     
@@ -198,25 +205,25 @@
                           <div>
                             <p>Синтаксис JS для этой команды:</p>
                             <pre class='markdown-body'>
-  DELETE( data, 'sandbox', [
-                              [column, 'LIKE', value]
-                           ]);
+  DELETE( data, 'sandbox', <rd>[</rd>
+                              <or>[</or>column, 'LIKE', value<or>]</or>
+                           <rd>]</rd>);
                             </pre>
                             <p>Параметры:</p>
                             <pre>                     
                                 
-  <i>DELETE('значения из БД', 'таблица', [
-                                          [имя_колонки, ВЫРАЖЕНИЕ, [значение_1, значение_2, ..., значение_N]],
-                                      ]);</i>                
+  <i>DELETE('значения из БД', 'таблица', <rd>[</rd>
+                                          <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1, значение_2, ..., значение_N<bl>]</bl>]</or>,
+                                      <rd>]</rd>);</i>                
                             </pre>
 
                             <p>Прицип работы параметров (И, ИЛИ):</p>
                             <pre>
- <i>DELETE('значения из БД', 'таблица', [
-                                           [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
+ <i>DELETE('значения из БД', 'таблица', <rd>[</rd>
+                                           <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N<bl>]</bl><or>]</or>
                                            И
-                                           [имя_колонки, ВЫРАЖЕНИЕ, [значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N]]
-                                      ]);</i>
+                                           <or>[</or>имя_колонки, ВЫРАЖЕНИЕ, <bl>[</bl>значение_1 ИЛИ значение_2 ИЛИ... ИЛИ значение_N<bl>]</bl><or>]</or>
+                                      <rd>]</rd>);</i>
                             </pre>
                           </div>
                       </div>
@@ -226,10 +233,6 @@
       </section>
 
       <div>&nbsp;</div>
-
-      <div id='TECHNICAL_DIV' style='display: none'>
-          
-      </div>
     </div>
 
     <!--  (JS_Gsheets)
@@ -239,17 +242,21 @@
     <!-- 
         Набор файлов, то же, что и JS_Gsheets,
         но файлы логически обособленны-->
-    <script src="js/examples/select.js"></script>   
-    <script src="js/examples/insert.js"></script>
-    <script src="js/examples/update.js"></script>
-    <script src="js/examples/delete.js"></script>
+    <script src="lib/examples/select.js"></script>   
+    <script src="lib/examples/insert.js"></script>
+    <script src="lib/examples/update.js"></script>
+    <script src="lib/examples/delete.js"></script>
+    <script src="lib/examples/async.js"></script>
 
-    <script src="js/send_data.js"></script>
+    <script src="lib/parts/config.js"></script>
+    <script src="lib/parts/sql_async.js"></script>
+    <script src="lib/parts/send_data.js"></script>
+    
+    <script src="lib/parts/addon.js"></script>
+    <script src="lib/parts/sql_callback.js"></script>
+    <script src="lib/parts/extract_data.js"></script>
+
     <script src="js/output.js"></script>
-    <script src="js/sql.js"></script>
-    <script src="js/extract_data.js"></script>
-
-    <script src="js/config.js"></script>
     <script src="js/tags.js"></script>
     <script src="js/filters.js"></script>
   </body>

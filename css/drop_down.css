@@ -1,6 +1,7 @@
   /* скрываем чекбоксы и блоки с содержанием */
 .drop-down-input {
     display: none; 
+    opacity: 0;
 }
 .drop-down-input + label ~ div{
     display: none;
@@ -21,9 +22,6 @@
 /* когда чекбокс активен показываем блоки с содержанием  */
 .drop-down-input:checked + label + div {
     display: block; 
-    background: #efefef;
-    -moz-box-shadow: inset 3px 3px 10px #7d8e8f;
-    -webkit-box-shadow: inset 3px 3px 10px #7d8e8f;
-    box-shadow: inset 3px 3px 10px #7d8e8f;
+    background: #e2e8e4;
     padding: 10px; 
 }

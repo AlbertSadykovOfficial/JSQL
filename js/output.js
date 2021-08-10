@@ -1,10 +1,7 @@
-/*
-        
-       
-        Заполнение таблицы
-				Создать шапку таблицы
-        Создать выпадающий список колонок
-
+/*      
+*   Заполнение таблицы
+*	Создать шапку таблицы
+*   Создать выпадающий список колонок
 */
 function print_result_as_array(headers, alt_headers, data)
 {
@@ -45,7 +42,8 @@ function print_table_header(HEADERS)
 
 function print_selector(HEADERS, ALT_HEADERS)
 {
-    let options = "";
+    let options = '';
+    let CHECK_ALL = '';
 
     options = tag_option(CHECK_ALL, "Все");
     
