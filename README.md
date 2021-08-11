@@ -1,16 +1,20 @@
-# JS_Gsheets
+# JSQL
 
-JS_Gsheets - небольшая библиотека для построения Базы Данных на основе Google-таблиц.
+JSQL - небольшая библиотека для построения Базы Данных на основе Google-таблиц. 
+
+:rocket: Всего 6 кБ !!!
+
+![alt text](https://github.com/AlbertSadykovOfficial/JSQL/blob/master/logo.png) 
 
 ### Github Page Demo:
 
-> https://albertsadykovofficial.github.io/JS_Gsheets/index.html
+> https://albertsadykovofficial.github.io/JSQL/index.html
 
 ### Примечание к использованию:
   
 :white_check_mark: Можно использовать как набор разнородных файлов из каталога lib/parts/.
 
-:white_check_mark: Можно использовать файл lib/all_in_one/JS_Gsheets.js как (ВСЕ В ОДНОМ).
+:white_check_mark: Можно использовать файлы каталога lib/all_in_one/ как (ВСЕ В ОДНОМ).
 
 ### Настройка для использования:
 
@@ -21,7 +25,7 @@ JS_Gsheets - небольшая библиотека для построения
 1.2 Создать несколько листов по нужде (лист - это таблица нашей БД)
 1.3 Скопировать ее хэш
 2. Создать Google-скрипт, 
-2.1. Всавить содежимое скрипта из папки google_script (https://github.com/AlbertSadykovOfficial/JS_Gsheets/blob/master/google_script /JS_Gsheets.js)
+2.1. Всавить содежимое скрипта из папки google_script (https://github.com/AlbertSadykovOfficial/JSQL/blob/master/lib/google_script/JSQL.gs)
 2.2  Вставить в переменную SHEET_KEY - хэш таблицы
 2.3 Сохранить изменения.
 2.3 Опубликовать скрипт как веб-приложение, сделать его выполнение доступным всем.
@@ -35,12 +39,12 @@ JS_Gsheets - небольшая библиотека для построения
 Параметры объявления:
 
 ```javascript
-let GSQL = new GSQL_constructor(google_sheet_hash, google_script_hash, [table_name_1, table_name_2, ...]);
+let JSQL = new JSQL_constructor(google_sheet_hash, google_script_hash, [table_name_1, table_name_2, ...]);
 ```
 Пример:
 
 ```javascript
-let GSQL = new GSQL_constructor('1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4', 
+let JSQL = new JSQL_constructor('1FGhlktidC_5rmwbY7T1z8Jn76feaJtty5fz0IQVJTz4', 
                                 'AKfycbyYYihG8l7QthbD8Pcu6M9jYtyv57Q9KWM15iIQhFKEJL06ed7GKo5SCaXzS1_pGxeaDg', 
                                 ['main', 'members', 'sandbox']);
 ```
@@ -75,7 +79,7 @@ INSERT('sandbox', [
 ---
 ### Примеры использования (для callback-варианта)
 #### Вызвать функцию
-Чтобы получить данные из google-таблицы, следует вызвать функцию ```queryGSQL()```. Функция выполнит асинхронный запрос к таблице, отфильтрует значения и вернет результат в callback-функцию, которую мы указали. Результатом функции при успешном выполнении является массив коллекций. При ошибке - ошибка, поэтому, чтобы не упал код можно поставить try/catch. 
+Чтобы получить данные из google-таблицы, следует вызвать функцию ```queryJSQL()```. Функция выполнит асинхронный запрос к таблице, отфильтрует значения и вернет результат в callback-функцию, которую мы указали. Результатом функции при успешном выполнении является массив коллекций. При ошибке - ошибка, поэтому, чтобы не упал код можно поставить try/catch. 
 
 Принимающая функция должна иметь только 1 аргумент (data)!
 
@@ -88,13 +92,13 @@ INSERT('sandbox', [
 
 Синтаксис:
 ```javascript
-queryGSQL(error_f, success_f, table_name); 
+queryJSQL(error_f, success_f, table_name); 
 ```
 Пример:
 ```javascript
-queryGSQL(console.log, select_data, 'main');
-queryGSQL(custom_log, update_data, 'members');
-queryGSQL(custom_alert, insert_data, 'sandbox');
+queryJSQL(console.log, select_data, 'main');
+queryJSQL(custom_log, update_data, 'members');
+queryJSQL(custom_alert, insert_data, 'sandbox');
 ```
 Дальше массив данных приходит в указанную нами функцию, через некоторое время, к примеру:
 ```javascript
@@ -318,7 +322,7 @@ async function async_example()
 ```
 
 #### Преимущества async над callback:
-+ Не надо вызывать специальную функцию ```queryGSQL()``` для вызова функции
++ Не надо вызывать специальную функцию ```queryJSQL()``` для вызова функции
 + Более удобный и интуитивный синтаксис, схожий с оригинальной работой с БД.
 
 #### Недостатки async в сравнении с callback

@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset='utf-8'>
-    <title>JS_Gsheets</title>
+    <title>JSQL</title>
+    <link rel="icon" href="logo.png">
     <meta name='viewport' content='width=device-width, initial-scale=1.0'/>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/table.css">
@@ -16,7 +17,7 @@
   <body>
     <div class="container">
       <div class="center own_width">
-          <h1>Ваши файлы</h1>
+          <h1>JSQL пример работы</h1>
           <p>
             <em>
                 <a id="google_table_href" href="" target="_blank">
@@ -32,11 +33,11 @@
          <div class='search own_width'>
                 <div class="search_row">
                     <div class="button_div">
-                        <input id="KEYWORD" type="text" placeholder="Поиск" onchange="queryGSQL(console.log, select_data, 'main');">
+                        <input id="KEYWORD" type="text" placeholder="Поиск" onchange="queryJSQL(console.log, select_data, 'main');">
                     </div>
                     <div class="button_div">
                         <a href="#" id="switch" class="button" onclick="show_filters()">+</a>
-                        <a href="#" class="button" onclick="queryGSQL(console.log, select_data, 'main');">Найти</a>
+                        <a href="#" class="button" onclick="queryJSQL(console.log, select_data, 'main');">Найти</a>
                     </div>
                 </div>
 
@@ -99,7 +100,7 @@
                           <input type="text" class="level" placeholder="level"> , 
                           <input type="text" class="say" placeholder="says"> )
 
-                          <a href="#" class="button" onclick="queryGSQL(console.log, insert_data,'sandbox')">Вставить</a>
+                          <a href="#" class="button" onclick="queryJSQL(console.log, insert_data,'sandbox')">Вставить</a>
 
                           <div class="demo">
                               <input type="checkbox" id="hd-1" class="drop-down-input"/>
@@ -138,7 +139,7 @@
                       = <input type="text" class="set_input" placeholder="set_value"> 
                       <b>WHERE</b> id = <input type="text" class="where_input" placeholder="where_value">
 
-                      <a href="#" class="button" onclick="queryGSQL(console.log, update_data,'sandbox')">Обновить</a>
+                      <a href="#" class="button" onclick="queryJSQL(console.log, update_data,'sandbox')">Обновить</a>
 
                     <div class="demo">
                         <input type="checkbox" id="hd-2" class="drop-down-input"/>
@@ -197,7 +198,7 @@
                             </select>
                       <b>LIKE</b> <input type="text" class="input_section" placeholder="value">
 
-                       <a href="#" class="button" onclick="queryGSQL(console.log, delete_data,'sandbox')">Удалить</a>
+                       <a href="#" class="button" onclick="queryJSQL(console.log, delete_data,'sandbox')">Удалить</a>
                     
                       <div class="demo">
                           <input type="checkbox" id="hd-3" class="drop-down-input"/>
@@ -234,27 +235,28 @@
 
       <div>&nbsp;</div>
     </div>
-
-    <!--  (JS_Gsheets)
-    Полная библиотека - сразу все файлы в 1.
-    <script src="lib/JS_Gsheets.js"></script>-->
     
-    <!-- 
-        Набор файлов, то же, что и JS_Gsheets,
-        но файлы логически обособленны-->
     <script src="lib/examples/select.js"></script>   
     <script src="lib/examples/insert.js"></script>
     <script src="lib/examples/update.js"></script>
     <script src="lib/examples/delete.js"></script>
     <script src="lib/examples/async.js"></script>
 
+<!-- Полная библиотека - сразу все файлы в 1.
+
+    <script src="lib/all_in_one/JSQL_async.js"></script>
+    <script src="lib/all_in_one/JSQL_callback.js"></script>
+-->
+<!-- 
+        Набор файлов, то же, что и JSQL,
+        но файлы логически обособленны
+-->
     <script src="lib/parts/config.js"></script>
-    <script src="lib/parts/sql_async.js"></script>
     <script src="lib/parts/send_data.js"></script>
-    
+    <script src="lib/parts/extract_data.js"></script>
+
     <script src="lib/parts/addon.js"></script>
     <script src="lib/parts/sql_callback.js"></script>
-    <script src="lib/parts/extract_data.js"></script>
 
     <script src="js/output.js"></script>
     <script src="js/tags.js"></script>
